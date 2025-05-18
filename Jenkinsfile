@@ -17,7 +17,7 @@ pipeline {
                     echo "Проверяем наличие test.sh:"
                     ls -la /app/scripts/test.sh
                     chmod +x /app/scripts/test.sh
-                    /app/scripts/test.sh
+                    ${WORKSPACE}/scripts/test.sh
                 '''
             }
         }
