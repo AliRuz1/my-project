@@ -12,12 +12,13 @@ pipeline {
             }
         }
         stage('Debug') {
-    steps {
-        sh '''
-            echo "WORKSPACE: ${WORKSPACE}"
-            find ${WORKSPACE} -name test.sh
-        '''
-    }
+            steps {
+                 sh '''
+                    echo "WORKSPACE: ${WORKSPACE}"
+                    find ${WORKSPACE} -name test.sh
+                '''
+            }
+        }
         stage('Test') {
             steps {
                 sh '''
