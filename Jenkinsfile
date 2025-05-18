@@ -15,8 +15,8 @@ pipeline {
             steps {
                 sh '''
                 pwd
-                chmod +x scripts/test.sh
-                /bin/bash scripts/test.sh
+                chmod +x /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
+                /bin/bash /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
                 '''
             }
         }
