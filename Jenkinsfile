@@ -10,12 +10,7 @@ pipeline {
             steps{
             sh 'npm install'
             }
-        }
-        stage('Run app') {
-            steps {
-                sh 'npm start'
-            }
-        }
+        }        
         stage('Test') {
             steps {
                 sh '''
@@ -23,5 +18,11 @@ pipeline {
                 '''
             }
         }
+        stage('Run app') {
+            steps {
+                sh 'npm start'
+            }
+        }
+
     }
 }
