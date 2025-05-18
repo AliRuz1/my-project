@@ -15,13 +15,13 @@ pipeline {
             steps {
                 sh '''
                     echo "Проверяем test.sh:"
-                    ls -la /app/scripts/test.sh
+                    ls -la /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
                     
                     # Даём права на выполнение
-                    chmod +x /app/scripts/test.sh
+                    chmod +x /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
                     
                     # Запускаем тест
-                    /app/scripts/test.sh || exit 1  # Выходим с ошибкой если тест провален
+                    /var/jenkins_home/workspace/Pipe_please/scripts/test.sh || exit 1  # Выходим с ошибкой если тест провален
                 '''
             }
         }
