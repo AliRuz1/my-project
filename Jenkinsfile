@@ -14,7 +14,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                /bin/bash scripts/test.sh    # Явно укажем интерпретатор
+                chmod +x /app/scripts/test.sh
+                /bin/bash /app/scripts/test.sh    # Явно укажем интерпретатор
                 '''
             }
         }
