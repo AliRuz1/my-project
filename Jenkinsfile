@@ -22,9 +22,7 @@ pipeline {
  stage('Test') {
     steps {
         sh '''
-            cp scripts/test.sh /tmp/test.sh
-            chmod +x /tmp/test.sh
-            /tmp/test.sh
+            ./scripts/test.sh
         '''
     }
 }
