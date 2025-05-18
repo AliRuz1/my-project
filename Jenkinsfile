@@ -22,17 +22,10 @@ pipeline {
 stage('Test') {
     steps {
         sh '''
-            echo "=== Встроенный тест ==="
-            # Проверка Node.js
-            node -v || exit 1
-            
-            # Проверка package.json
-            if [ ! -f "package.json" ]; then
-                echo "ОШИБКА: package.json не найден"
-                exit 1
-            fi
-            
-            echo "✓ Все проверки пройдены"
+            echo "=== Проверка скрипта ==="
+            file scripts/test.sh          # Проверим тип файла
+            cat scripts/test.sh          # Выведем содержимое
+            /bin/bash scripts/test.sh    # Явно укажем интерпретатор
         '''
     }
 }
