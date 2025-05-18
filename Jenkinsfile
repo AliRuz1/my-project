@@ -2,26 +2,28 @@ pipeline {
     agent {
         docker {
             image 'saruz/my-node-app:latest'
-            args '-v $WORKSPACE:/app'  // Монтируем рабочую директорию
+            args '-v $WORKSPACE:/app -w /app'  // Монтируем и устанавливаем рабочую директорию
         }
     }
     stages {
-        stage('Install dependencies') {
+        stage('Prepare') {
             steps {
-                sh 'npm install'
+                sh '''
+                    echo "=== Подготовка ==="
+                    echo "Рабочая директория: $(pwd)"
+                    echo "Содержимое:"
+                    ls -la
+                    echo "Скрипты:"
+                    ls -la scripts/
+                    chmod +x scripts/test.sh
+                '''
             }
         }
         stage('Test') {
             steps {
                 sh '''
-                    echo "Проверяем test.sh:"
-                    ls -la /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
-                    
-                    # Даём права на выполнение
-                    chmod +x /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
-                    
-                    # Запускаем тест
-                    /var/jenkins_home/workspace/Pipe_please/scripts/test.sh || exit 1  # Выходим с ошибкой если тест провален
+                    echo "=== Запуск теста ==="
+                    ./scripts/test.sh
                 '''
             }
         }
