@@ -22,9 +22,6 @@ pipeline {
 stage('Test') {
     steps {
         sh '''
-            echo "=== Проверка скрипта ==="
-            file scripts/test.sh          # Проверим тип файла
-            cat scripts/test.sh          # Выведем содержимое
             /bin/bash scripts/test.sh    # Явно укажем интерпретатор
         '''
     }
