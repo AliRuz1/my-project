@@ -19,14 +19,15 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
-            steps {
-                sh '''
-                    echo "=== Запуск теста ==="
-                    ./scripts/test.sh
-                '''
-            }
-        }
+ stage('Test') {
+    steps {
+        sh '''
+            cp scripts/test.sh /tmp/test.sh
+            chmod +x /tmp/test.sh
+            /tmp/test.sh
+        '''
+    }
+}
         stage('Run app') {
             steps {
                 sh 'npm start'
