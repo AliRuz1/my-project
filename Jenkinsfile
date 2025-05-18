@@ -6,18 +6,8 @@ pipeline {
         }
     }
     stages {
-        stage('Prepare') {
-            steps {
-                sh '''
-                    echo "=== Подготовка ==="
-                    echo "Рабочая директория: $(pwd)"
-                    echo "Содержимое:"
-                    ls -la
-                    echo "Скрипты:"
-                    ls -la scripts/
-                    chmod +x scripts/test.sh
-                '''
-            }
+        stage('Install Dependencies'){
+            sh 'npm install'
         }
 stage('Test') {
     steps {
