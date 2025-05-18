@@ -11,16 +11,16 @@ pipeline {
             sh 'npm install'
             }
         }
-stage('Test') {
-    steps {
-        sh '''
-            /bin/bash scripts/test.sh    # Явно укажем интерпретатор
-        '''
-    }
-}
         stage('Run app') {
             steps {
                 sh 'npm start'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '''
+                /bin/bash scripts/test.sh    # Явно укажем интерпретатор
+                '''
             }
         }
     }
