@@ -22,7 +22,7 @@ pipeline {
  stage('Test') {
     steps {
         sh '''
-            ./scripts/test.sh
+            ./var/jenkins_home/workspace/Pipe_please/scripts/test.sh
         '''
     }
 }
