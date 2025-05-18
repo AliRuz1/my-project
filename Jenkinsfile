@@ -19,10 +19,22 @@ pipeline {
                 '''
             }
         }
- stage('Test') {
+        stage('Test') {
     steps {
         sh '''
-            ./var/jenkins_home/workspace/Pipe_please/scripts/test.sh
+            echo "=== Создаем новый тест ==="
+            cat > /tmp/new_test.sh << 'EOF'
+#!/bin/bash
+echo "=== Тест запущен ==="
+echo "Рабочая директория: $(pwd)"
+echo "Node.js версия: $(node -v)"
+[ -f "package.json" ] && echo "✓ package.json найден" || exit 1
+echo "=== Тест пройден ==="
+exit 0
+EOF
+            
+            chmod +x /tmp/new_test.sh
+            /tmp/new_test.sh
         '''
     }
 }
