@@ -16,7 +16,7 @@ pipeline {
                 sh '''
                 pwd
                 chmod +x /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
-                /bin/bash /var/jenkins_home/workspace/Pipe_please/scripts/test.sh
+                ./var/jenkins_home/workspace/Pipe_please/scripts/test.sh
                 '''
             }
         }
